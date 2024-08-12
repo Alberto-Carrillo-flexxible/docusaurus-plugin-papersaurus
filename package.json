@@ -1,5 +1,5 @@
 {
-  "name": "docusaurus-plugin-papersaurus-flexx",
+  "name": "docusaurus-plugin-papersaurus",
   "version": "3.5.1",
   "description": "Papersaurus plugin for Docusaurus (create PDF files).",
   "main": "lib/index.js",
