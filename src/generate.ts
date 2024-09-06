@@ -686,9 +686,12 @@ const getHtmlWithAbsoluteLinks = (html: string, version: LoadedVersion, siteConf
       // this is some kind of a manually created link.
       return matched;
     }
-
     if (p2.indexOf(siteConfig.baseUrl) === 0) {
-      return matched.replace(p2, `${siteConfig.url}${p2}`);
+      let appendBaseURL : string
+      process.env.BASE_URL === "false" ? appendBaseURL = "" : appendBaseURL = `/${process.env.BASE_URL}`
+      let cleanedLink =  `${siteConfig.url}${appendBaseURL}${p2}`
+      cleanedLink = cleanedLink.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+      return matched.replace(p2, cleanedLink);
     }
 
     return matched.replace(p2, `${siteConfig.url}${siteConfig.baseUrl}docs/${versionPath}${p2}`);
